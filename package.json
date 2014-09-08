@@ -1,0 +1,27 @@
+{
+  "name": "vidhi",
+  "version": "1.0.0",
+  "description": "\"Law Practice & Legal Case Management Web App\"",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.8.8",
+    "vash": "^0.7.12-1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "testVidhi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\"git@github.com:hemantksingh/vidhi.git\""
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "hemantksingh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hemantksingh/vidhi.git\"/issues"
+  },
+  "homepage": "https://github.com/hemantksingh/vidhi.git\""
+}
