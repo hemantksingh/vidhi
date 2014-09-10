@@ -9,14 +9,16 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "testVidhi"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "\"git@github.com:hemantksingh/vidhi.git\""
   },
   "keywords": [
-    "nodejs"
+    "node",
+    "express",
+    "heroku"
   ],
   "author": "hemantksingh",
   "license": "ISC",
