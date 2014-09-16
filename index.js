@@ -2,7 +2,7 @@ var express = require("express");
 
 var app = initialiseApp();
 app.get("/", function(req, res) {
-	res.render("index", {});
+	res.render("index", {title: "Law Practice & Legal Case Management Software | Vidhi"});
 });
 
 app.listen(app.get("port"), function() {
