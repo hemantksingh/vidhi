@@ -30,9 +30,22 @@
 		            <a href="/sign-in">Sign in</a>
 		          </li>
 		        </ul>
-		      </div>
+		     </div>
 		</div>
 	</div>
+
+	<section id = "body" class = "container">
+		<div class="page-header">
+			<!-- <h2>@model.title</h2> -->
+		</div>
+		@html.block("body")
+	</section>
+	<hr />
+	<footer class="container">
+		<p>Vidhi</p>
+	</footer>
+	<script src = "/lib/jquery/dist/jquery.min.js"></script>
+	<script src = "/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 	@html.block("scripts")
 </body>
 </html>

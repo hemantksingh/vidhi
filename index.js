@@ -5,6 +5,10 @@ app.get("/", function(req, res) {
 	res.render("index", {title: "Law Practice & Legal Case Management Software | Vidhi"});
 });
 
+app.get("/sign-up", function(req, res) {
+	res.render("sign-up", {title: "Sing up for Vidhi"});
+});
+
 app.listen(app.get("port"), function() {
 	console.log("Vidhi is running at localhost:" + app.get("port"));	
 });
