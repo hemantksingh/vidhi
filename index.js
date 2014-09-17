@@ -9,6 +9,10 @@ app.get("/sign-up", function(req, res) {
 	res.render("sign-up", {title: "Sing up for Vidhi"});
 });
 
+app.get("/sign-in", function(req, res) {
+	res.render("sign-in", {title: "Sing in to Vidhi"});
+});
+
 app.listen(app.get("port"), function() {
 	console.log("Vidhi is running at localhost:" + app.get("port"));	
 });
