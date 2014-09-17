@@ -1,16 +1,11 @@
 var express = require("express");
 
 var app = initialiseApp();
-app.get("/", function(req, res) {
+
+// Create a catch-all handler that runs after other regular routes
+// Allow angular SPA to handle the routing on the client.
+app.get("*", function(req, res) {
 	res.render("index", {title: "Law Practice & Legal Case Management Software | Vidhi"});
-});
-
-app.get("/sign-up", function(req, res) {
-	res.render("sign-up", {title: "Sing up for Vidhi"});
-});
-
-app.get("/sign-in", function(req, res) {
-	res.render("sign-in", {title: "Sing in to Vidhi"});
 });
 
 app.listen(app.get("port"), function() {
@@ -20,6 +15,7 @@ app.listen(app.get("port"), function() {
 function initialiseApp() {
 	var app = express();
 	app.set("view engine", "vash");
+
 	// Node environment variable. 'process.env.ENV_VAR_NAME'
 	// It can be set using: PORT=4000 node index.js
 	// or in Windows: set PORT=4000
