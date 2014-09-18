@@ -17,7 +17,7 @@ function initialiseApp() {
 	app.set("view engine", "vash");
 
 	// Node environment variable. 'process.env.ENV_VAR_NAME'
-	// It can be set using: PORT=4000 node index.js
+	// It can be set using: PORT=4000 node server.js
 	// or in Windows: set PORT=4000
 	app.set("port", (process.env.PORT || 4000));
 	app.use(express.static(__dirname + "/public"));

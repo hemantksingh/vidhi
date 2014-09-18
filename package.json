@@ -2,14 +2,14 @@
   "name": "vidhi",
   "version": "1.0.0",
   "description": "\"Law Practice & Legal Case Management Web App\"",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.8.8",
     "vash": "^0.7.12-1"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
