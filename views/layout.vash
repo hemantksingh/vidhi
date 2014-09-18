@@ -33,6 +33,7 @@
 	</div>
 
 	<section id = "body" class = "container">
+		@html.block("body")
 		<div ng-view></div>
 	</section>
 	<hr />
