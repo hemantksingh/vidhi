@@ -1,6 +1,16 @@
 var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var mongodb = require('mongodb');
+
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var dbUrl;
+
+if(env === 'development') {
+	dbUrl = "mongodb://localhost:27017/vidhi";	
+} else {
+	dbUrl = 'mongodb://hkumar:vidhi@ds063909.mongolab.com:63909/vidhi';	
+}
 
 var app = initialiseApp();
 
@@ -11,7 +21,15 @@ app.get("*", function(req, res) {
 });
 
 app.listen(app.get("port"), function() {
-	console.log("Vidhi is running at localhost:" + app.get("port"));	
+	console.log("Vidhi is running at localhost:" + app.get("port"));
+});
+
+require('./server/database')(mongodb,dbUrl).getDb(function(err, theDb) {
+	if(theDb) {
+		console.log("Connected to the database:- " + theDb.db.options.url);
+	} else if(err) {
+		console.log("Failed to connect to the database.");
+	}
 });
 
 function initialiseApp() {
