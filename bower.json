@@ -1,6 +1,6 @@
 {
   "name": "vidhi",
-  "main": "index.js",
+  "main": "server.js",
   "version": "1.0.0",
   "homepage": "https://github.com/hemantksingh/vidhi",
   "authors": [
