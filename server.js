@@ -1,4 +1,6 @@
-var express = require("express");
+var express = require('express');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 var app = initialiseApp();
 
@@ -16,7 +18,7 @@ function initialiseApp() {
 	var app = express();
 
 	// Specify the directory where express looks up the views.
-	// By default this is views.
+	// By default this directory is views.
 	app.set('views', __dirname + '/server/views');
 	app.set("view engine", "vash");
 
@@ -24,6 +26,11 @@ function initialiseApp() {
 	// It can be set using: PORT=4000 node server.js
 	// or in Windows: set PORT=4000
 	app.set("port", (process.env.PORT || 4000));
+	app.use(logger('dev'));
+
+	// Allow parsing urlencoded request bodies into req.body
+	app.use(bodyParser.urlencoded({extended: true}));
+	app.use(bodyParser.json());
 	
 	// Define static routing to the public directory.
 	// Allows any request that matches a file in the public 
