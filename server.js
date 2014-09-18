@@ -14,12 +14,20 @@ app.listen(app.get("port"), function() {
 
 function initialiseApp() {
 	var app = express();
+
+	// Specify the directory where express looks up the views.
+	// By default this is views.
+	app.set('views', __dirname + '/server/views');
 	app.set("view engine", "vash");
 
 	// Node environment variable. 'process.env.ENV_VAR_NAME'
 	// It can be set using: PORT=4000 node server.js
 	// or in Windows: set PORT=4000
 	app.set("port", (process.env.PORT || 4000));
+	
+	// Define static routing to the public directory.
+	// Allows any request that matches a file in the public 
+	// directory to be served by express.
 	app.use(express.static(__dirname + "/public"));
 	return app;
 }
