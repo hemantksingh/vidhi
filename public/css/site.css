@@ -1,1 +1,17 @@
-site.css
+body {
+	padding-top: 61px ;
+}
+
+.navbar-header {
+	margin-top: -15px;
+	margin-bottom -20px;	
+}
+
+footer {
+	 padding-left: 15px;
+	 padding-right: 15px;
+}
+
+footer p {
+	font-size: small;
+}
