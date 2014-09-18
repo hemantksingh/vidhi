@@ -1,4 +1,6 @@
-function database(mongodb, dbUrl) {
+var mongodb = require('mongodb');
+
+module.exports = function (config) {
 	var theDb = null;
 
 	// mongodb supports connection pooling, so creating a connection 
@@ -8,7 +10,7 @@ function database(mongodb, dbUrl) {
 		
 		if(!theDb) {
 			// connect to the db
-			mongodb.MongoClient.connect(dbUrl, function(err, db) {
+			mongodb.MongoClient.connect(config.dbUrl, function(err, db) {
 				if(err) {
 					callback(err, null);
 				} else {
@@ -29,5 +31,3 @@ function database(mongodb, dbUrl) {
 		getDb: getDb
 	};
 }
-
-module.exports = database
