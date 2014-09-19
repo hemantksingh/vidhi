@@ -3,6 +3,7 @@ process.env.NODE_ENV || 'development';
 var config = require('./server/config/config')[env];
 var app = require('./server/config/express')(config);
 var database = require('./server/database')(config);
+var authorization = require('./server/authorization')(database);
 var routes = require('./server/config/routes')(app);
 var seedData = require('./server/seedData');
 
