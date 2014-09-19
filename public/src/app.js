@@ -16,7 +16,13 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 })
 .controller('signInController', function($scope) {
 	$scope.title = "Vidhi - Sign in";
+	$scope.signIn = function(email, password) {
+		console.log(email + ' ' + password);
+	};
 })
 .controller('signUpController', function($scope) {
 	$scope.title = "Vidhi - Sign up";
+	$scope.signUp = function(){
+		console.log("signed up");
+	};
 });
