@@ -1,21 +1,8 @@
-var passport = require('passport');
+var auth = require('./auth');
 
 module.exports = function(app) {
 	
-	app.post("/login", function(req, res, callback) {
-		var auth = passport.authenticate('local', 
-			function(err, user, info) {
-				if(err) {return	callback(err);}
-				if(!user) {res.send({success: false});} 
-				req.logIn(user, function(err) {
-					if(err) { return callback(err)} 
-					res.send({success:true, user: user});
-				});
-			}
-		);
-
-		auth(req, res, callback);
-	});
+	app.post("/login", auth().authenticate);
 
 	// Create a catch-all handler that runs after other regular routes
 	// Allow angular SPA to handle the routing on the client.
