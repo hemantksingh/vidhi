@@ -1,25 +1,29 @@
 
-<h3>{{title}}</h3>
-
-<form role="form" class="form-horizontal">
-	<div class="form-group">
-		<label class="control-label col-lg-1">Email</label>
-		<div class="col-lg-3">
-			<input type="text" name="email" class="form-control" placeholder="email" 
+<div class="text-right" ng-show="user!=null">
+	Welcome {{user.firstName}} !
+</div>
+<div ng-hide= "user!=null">
+	<h3>{{title}}</h3>
+	<form role="form" class="form-horizontal">
+		<div class="form-group">
+			<label class="control-label col-lg-1">Email</label>
+			<div class="col-lg-3">
+				<input type="text" name="email" class="form-control" placeholder="email" 
 				ng-model="email"/>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-lg-1">Password</label>
-		<div class="col-lg-3">
-			<input type="password" name="password" class="form-control" placeholder="password" 
+		<div class="form-group">
+			<label class="control-label col-lg-1">Password</label>
+			<div class="col-lg-3">
+				<input type="password" name="password" class="form-control" placeholder="password" 
 				ng-model="password"/>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-lg-offset-1 col-lg-3">
-			<input type="submit" value="Sign in" class="btn btn-primary" 
+		<div class="form-group">
+			<div class="col-lg-offset-1 col-lg-3">
+				<input type="submit" value="Sign in" class="btn btn-primary" 
 				ng-click="signIn(email, password)"/>
+			</div>
 		</div>
-	</div>
-</form>
+	</form>
+</div>

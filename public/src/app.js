@@ -20,6 +20,7 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 		$http.post('/login', {username: email, password: password})
 			.then(function(response) {
 				if(response.data.success) {
+					$scope.user = response.data.user;
 					console.log("logged in..");
 				} else {
 					console.log("failed to log in.")
