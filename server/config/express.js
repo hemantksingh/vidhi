@@ -19,7 +19,7 @@ module.exports = function(config) {
 	// Allow parsing urlencoded request bodies into req.body
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.json());
-	app.use(session({secret: 'vidhi pms'}));
+	app.use(session({secret: 'vidhi pms', saveUninitialized: true, resave: true}));
 	app.use(passport.initialize());
 	app.use(passport.session());
 	
