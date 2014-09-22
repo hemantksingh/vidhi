@@ -1,8 +1,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function(database) {
-	console.log("setting up passport");
+module.exports = function(hasher, database) {
 	passport.use(new LocalStrategy(verifyUser));
 	passport.serializeUser(function(user, callback) {
 		console.log("Serializing.. " + JSON.stringify(user));
@@ -10,6 +9,7 @@ module.exports = function(database) {
 			callback(null, user.email);
 		}
 	});
+
 	passport.deserializeUser(function(key, callback) {
 		database.getDb(function(err, db){
 			if(err) {
@@ -32,7 +32,6 @@ module.exports = function(database) {
 	function verifyUser(username, password, callback) {
 		database.getDb(function(err, db) {
 			if(!err) {
-				console.log("calling db");
 				db.users.findOne({email:username}, function(err, user){
 					if(!err && user){
 						console.log("user found");
