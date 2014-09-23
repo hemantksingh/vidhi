@@ -1,24 +1,72 @@
 <h3>{{title}}</h3>
-<form role="form" class="form-horizontal">
+<form role="form" name="accountForm" class="form-horizontal" novalidate>
 	<div class="form-group">
-		<!-- <label class="control-label col-lg-1">First name</label> -->
 		<div class="col-lg-3">
-			<input type="text" name="name" class="form-control" placeholder="First name" />
+			<input type="text" name="firstName" class="form-control" placeholder="First name" ng-model="user.firstName" required/>
+			<div class="text-danger" ng-show="accountForm.firstName.$error.required && accountForm.firstName.$dirty">
+				First name is required.
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-lg-3">
-			<input type="text" name="name" class="form-control" placeholder="Last name" />
+			<input type="text" name="lastName" class="form-control" placeholder="Last name" ng-model="user.lastName" required/>
+			<div class="text-danger" ng-show="accountForm.lastName.$error.required && accountForm.lastName.$dirty">
+				Last name is required.
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-lg-3">
-			<input type="text" name="name" class="form-control" placeholder="Email" />
+			<input type="text" name="email" class="form-control" placeholder="Your Email" ng-model="user.email" required ng-pattern="/^[a-zA-Z0-9'._%+-]+@[a-zA-Z0-9.-]*\.[a-zA-Z]{2,9}$/"/>
+			<div class="text-danger" ng-show="accountForm.email.$error.required && accountForm.email.$dirty">
+				Email address is required.
+			</div>
+			<div class="text-danger" ng-show="accountForm.email.$error.pattern && accountForm.email.$dirty">
+				Email address is invalid. Please re-try.
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-lg-3">
-			<input type="submit" value="Sign up" class="btn btn-primary" ng-click="signUp()" />
+			<input type="password" name="password" class="form-control" placeholder="Password" ng-model="user.password"required>
+			<div class="text-danger" ng-show="accountForm.password.$error.required && accountForm.password.$dirty">
+				Password is required.
+			</div>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<div class="col-lg-3">
+			<input type="password" name="confirmedPassword" class="form-control" placeholder="Confirm Password" ng-model="user.confirmedPassword">
+			<div class="text-danger" ng-show="accountForm.confirmedPassword.$dirty && !passwordsMatch(user)">
+				Passwords do not match.
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-lg-3">
+			<input type="text" name="firmName" class="form-control" placeholder="Your firm name" ng-model="user.firmName" required/>
+			<div class="text-danger" ng-show="accountForm.firmName.$error.required && accountForm.firmName.$dirty">
+				Firm name is required.
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-lg-3">
+			<input type="text" name="phoneNumber" class="form-control" placeholder="Phone number" ng-model="user.phoneNumber" required/>
+			<div class="text-danger" ng-show="accountForm.phoneNumber.$error.required && accountForm.phoneNumber.$dirty">
+				Phone number is required.
+			</div>
+		</div>
+	</div>
+	<div class="form-group col-lg-3">
+		<button class="btn btn-default " 
+		ng-disabled="accountForm.$invalid && !passwordsmatch(user)" 
+		ng-click="signUp(user)">
+		Sign up
+	</button>
+	<div class="text-danger" ng-show="errors.length > 0" ng-repeat="error in errors">{{error}}</div>
+</div>
 </form>

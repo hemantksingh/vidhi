@@ -29,8 +29,12 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 	};
 })
 .controller('signUpController', function($scope) {
-	$scope.title = "Vidhi - Sign up";
-	$scope.signUp = function(){
-		console.log("signed up");
+	$scope.title = "Vidhi - Sign up for a free account";
+	$scope.signUp = function(user){
+		console.log(JSON.stringify(user));
 	};
+
+	$scope.passwordsMatch = function(user) {
+		return user.password === user.confirmedPassword;
+	}
 });
