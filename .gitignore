@@ -1,4 +1,5 @@
 # Ignore Node Modules
 node_modules
+*.log
 # dist
 # public/lib/*
