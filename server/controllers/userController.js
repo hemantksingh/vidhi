@@ -1,8 +1,6 @@
-var passport = require('passport');
+module.exports = function(passport) {
 
-module.exports = function() {  
-
-	function authenticate(req, res, callback) {
+	function signIn(req, res, callback) {
 
 		var auth = passport.authenticate('local', 
 			function(err, user, info) {
@@ -18,5 +16,5 @@ module.exports = function() {
 		auth(req, res, callback);
 	}
 
-	return { authenticate : authenticate };
+	return { signIn : signIn };
 }

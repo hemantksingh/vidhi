@@ -1,20 +1,21 @@
 var env = process.env.NODE_ENV = 
 process.env.NODE_ENV || 'development';
 var config = require('./server/config/config')[env];
-var app = require('./server/config/express')(config);
 var database = require('./server/database')(config);
-var crypto = require('crypto');
-var hasher = require('./server/hasher')(crypto);
+var hasher = require('./server/hasher')(require('crypto'));
 var authorization = require('./server/authorization')(hasher, database);
-var routes = require('./server/config/routes')(app);
-var seedData = require('./server/seedData');
+var app = require('./server/config/express')(config);
+var passport = require('./server/config/passport')(authorization, database);
+var userController = require('./server/controllers/userController');
+var routes = require('./server/config/routes')(app, userController(require('passport')));
 
 app.listen(config.port, function() {
 	console.log("Vidhi is running at localhost:" + config.port);
 });
 
-database.getDb(function(err, theDb) {
-	if(theDb) {
+var seedData = require('./server/seedData');
+database.getDb(function(err, theDb) {	if(theDb) {
+
 		console.log("Connected to the database:- " + theDb.db.options.url);
 		theDb.users.count(function(err, count) {
 			if(err) {

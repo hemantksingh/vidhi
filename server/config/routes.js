@@ -1,8 +1,7 @@
-var auth = require('./auth');
 
-module.exports = function(app) {
+module.exports = function(app, userController) {
 	
-	app.post("/login", auth().authenticate);
+	app.post("/login", userController.signIn);
 
 	// Create a catch-all handler that runs after other regular routes
 	// Allow angular SPA to handle the routing on the client.
