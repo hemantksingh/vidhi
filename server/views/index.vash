@@ -1,7 +1,7 @@
 @html.extend('layout', function(model) {
 	@html.block("body", function(model) {
 		<div class="row">
-			<p>The cloud based Law Practice & Legal Case Management solution for the forward looking law firms.</p>
+			<p>The cloud based Law Practice & Legal Case Management solution for the modern law firm.</p>
 		<div>
 	})
 })
