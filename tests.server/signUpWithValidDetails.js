@@ -1,4 +1,5 @@
 var should = require('should');
+var hasher = require('../server/hasher')(require('crypto'));
 var userController = require('../server/controllers/userController');
 
 describe("Signing up with valid details", function() {
@@ -26,7 +27,7 @@ describe("Signing up with valid details", function() {
 			}
 		};
 
-		userController({}).signUp(request, response);
+		userController({}, hasher).signUp(request, response);
 	});
 
 	it("should create a user.", function(){
@@ -34,9 +35,13 @@ describe("Signing up with valid details", function() {
 		createdUser.lastName.should.equal("K");
 		createdUser.username.should.equal("user@org.com");
 		createdUser.email.should.equal("user@org.com");
-		createdUser.password.should.equal("password");
 		createdUser.firmName.should.equal("Firm");
 		createdUser.phoneNumber.should.equal("0123 456789");
+	});
+
+	it("should encrypt the user password.", function() {
+		createdUser.passwordHash.should.not.equal("password");
+		should(createdUser.salt).not.equal(null);		
 	});
 
 	it("should return a response", function(){
