@@ -16,5 +16,13 @@ module.exports = function(passport) {
 		auth(req, res, callback);
 	}
 
-	return { signIn : signIn };
+	function signUp(req, res) {
+		console.log(JSON.stringify(req.body));
+		res.send({success: true, user: req.body});
+	}
+
+	return { 
+		signIn : signIn,
+		signUp : signUp
+	}
 }

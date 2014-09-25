@@ -28,10 +28,26 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 			});
 	};
 })
-.controller('signUpController', function($scope) {
+.controller('signUpController', function($scope, $http, $location) {
 	$scope.title = "Vidhi - Sign up for a free account";
+	
 	$scope.signUp = function(user){
 		console.log(JSON.stringify(user));
+		$http.post('/signUp', {
+			username: user.email, 
+			firstName: user.firstName, 
+			lastName: user.lastName,
+			email: user.email,
+			password : user.password,
+			firmName: user.firstName,
+			phoneNumber: user.phoneNumber})
+		.then(function(response) {
+			if(response.data.success) {
+				$location.path("/sign-in");
+			} else {
+				console.log("failed to create user.");
+			}
+		});
 	};
 
 	$scope.passwordsMatch = function(user) {

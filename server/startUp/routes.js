@@ -2,6 +2,7 @@
 module.exports = function(app, userController) {
 	
 	app.post("/login", userController.signIn);
+	app.post("/signUp", userController.signUp);
 
 	// Create a catch-all handler that runs after other regular routes
 	// Allow angular SPA to handle the routing on the client.
