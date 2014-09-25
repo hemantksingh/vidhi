@@ -20,7 +20,7 @@ module.exports = function (config) {
 					};
 					callback(null, theDb);
 				}
-			})
+			});
 		}
 		else {
 			callback(null, theDb);
@@ -30,4 +30,4 @@ module.exports = function (config) {
 	return {
 		getDb: getDb
 	};
-}
+};

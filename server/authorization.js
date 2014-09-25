@@ -24,5 +24,5 @@ module.exports = function(hasher, database) {
 
 	return {
 		verifyUser : verifyUser
-	}
-}
+	};
+};

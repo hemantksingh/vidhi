@@ -28,4 +28,4 @@ module.exports = function(config) {
 	// directory to be served by express.
 	app.use(express.static(config.rootPath + "/public"));
 	return app;
-}
+};

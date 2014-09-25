@@ -6,7 +6,7 @@ module.exports = function(crypto) {
 			.toString('hex')
 			.substring(0, len);
 
-	};
+	}
 
 	 /*Compute the hash for the source with a salt in order to produce 
 	 a random hash that represents that source.*/
@@ -20,4 +20,4 @@ module.exports = function(crypto) {
 		createSalt: createSalt,
 		computeHash: computeHash
 	};
-}
+};

@@ -10,4 +10,4 @@ module.exports = function(app, userController) {
 		res.render("index", {title: 
 			"Law Practice & Legal Case Management Software | Vidhi"});
 	});
-}
+};

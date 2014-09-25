@@ -7,7 +7,7 @@ module.exports = function(passport) {
 				if(err) {return	callback(err);}
 				if(!user) {res.send({success: false});} 
 				req.logIn(user, function(err) {
-					if(err) { return callback(err)} 
+					if(err) { return callback(err);} 
 						res.send({success:true, user: user});
 				});
 			}
@@ -24,5 +24,5 @@ module.exports = function(passport) {
 	return { 
 		signIn : signIn,
 		signUp : signUp
-	}
-}
+	};
+};
