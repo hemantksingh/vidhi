@@ -1,4 +1,4 @@
-module.exports = function(passport, hasher) {
+module.exports = function(passport, hasher, userRepository) {
 
 	function signIn(req, res, callback) {
 
@@ -17,7 +17,6 @@ module.exports = function(passport, hasher) {
 	}
 
 	function signUp(req, res) {
-		console.log(JSON.stringify(req.body));
 		var salt = hasher.createSalt();
 		var user = {
 			firstName: req.body.firstName,
@@ -28,9 +27,15 @@ module.exports = function(passport, hasher) {
 			salt: salt,
 			firmName: req.body.firmName,
 			phoneNumber: req.body.phoneNumber
-		}; 
+		};
 
-		res.send({success: true, user: user});
+		userRepository.addUser(user, function(err) {
+			if(!err) {
+				res.send({success: true, user: user});
+			} else {
+				res.send({success: false});
+			}
+		});
 	}
 
 	return { 

@@ -6,8 +6,10 @@ var hasher = require('./server/hasher')(require('crypto'));
 var authorization = require('./server/authorization')(hasher, database);
 var app = require('./server/startUp/express')(config);
 var passport = require('./server/startUp/passport')(authorization, database);
+var userRepository = require('./server/repositories/userRepository')(database);
 var userController = require('./server/controllers/userController');
-var routes = require('./server/startUp/routes')(app, userController(require('passport'), hasher));
+var routes = require('./server/startUp/routes')(
+	app, userController(require('passport'), hasher, userRepository));
 
 app.listen(config.port, function() {
 	console.log("Vidhi is running at localhost:" + config.port);

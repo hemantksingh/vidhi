@@ -1,11 +1,13 @@
 var should = require('should');
 var hasher = require('../server/hasher')(require('crypto'));
 var userController = require('../server/controllers/userController');
+var fakeUserRepository = require('../tests.server/fakes/fakeUserRepository');
 
 describe("Signing up with valid details", function() {
 	
 	var responseSuceeded = false;
 	var createdUser = null;
+	var userRepository = fakeUserRepository();
 
 	beforeEach(function() {
 		var request = {
@@ -27,7 +29,7 @@ describe("Signing up with valid details", function() {
 			}
 		};
 
-		userController({}, hasher).signUp(request, response);
+		userController({}, hasher, userRepository).signUp(request, response);
 	});
 
 	it("should create a user.", function(){
@@ -42,6 +44,11 @@ describe("Signing up with valid details", function() {
 	it("should encrypt the user password.", function() {
 		createdUser.passwordHash.should.not.equal("password");
 		should(createdUser.salt).not.equal(null);		
+	});
+
+	it("should save the user.", function() {
+		var savedUser = userRepository.getLastSavedUser();
+		should(savedUser).not.equal(null);
 	});
 
 	it("should return a response", function(){
