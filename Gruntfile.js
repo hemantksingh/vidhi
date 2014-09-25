@@ -1,5 +1,27 @@
 module.exports = function(grunt) {
   grunt.initConfig({
+     jshint: {
+    options: {
+      curly: true,
+      eqeqeq: true,
+      eqnull: true,
+      browser: true,
+      globals: {
+        jQuery: true
+      },
+    },
+      files: {
+        src: ['Gruntfile.js','server/**/*.js', 'specs/**/*.js']
+      },
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['tests.server/**/*.js']
+      }
+    },
     nodemon: {
       all: {
         script: 'server.js',
@@ -9,7 +31,10 @@ module.exports = function(grunt) {
       }
     }
   });
+
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('default', ['nodemon']);
+  grunt.registerTask('default', ['mochaTest', 'nodemon']);
 };

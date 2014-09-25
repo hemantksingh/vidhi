@@ -15,7 +15,12 @@
     "vash": "^0.7.12-1"
   },
   "devDependencies": {
-    "grunt-nodemon": "^0.3.0"
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-mocha-test": "^0.12.0",
+    "grunt-nodemon": "^0.3.0",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
   },
   "scripts": {
     "start": "node server.js"
