@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       },
     },
       files: {
-        src: ['Gruntfile.js','server/**/*.js', 'specs/**/*.js']
+        src: ['Gruntfile.js','server/**/*.js', 'tests.server/**/*.js']
       },
     },
     mochaTest: {
