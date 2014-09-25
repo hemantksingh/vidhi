@@ -39,7 +39,7 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 			lastName: user.lastName,
 			email: user.email,
 			password : user.password,
-			firmName: user.firstName,
+			firmName: user.firmName,
 			phoneNumber: user.phoneNumber})
 		.then(function(response) {
 			if(response.data.success) {
