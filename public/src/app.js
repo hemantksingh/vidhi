@@ -16,16 +16,19 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 })
 .controller('signInController', function($scope, $http) {
 	$scope.title = "Vidhi - Sign in";
+	$scope.signInError = null;
+
 	$scope.signIn = function(email, password) {
 		$http.post('/login', {username: email, password: password})
-			.then(function(response) {
-				if(response.data.success) {
-					$scope.user = response.data.user;
-					console.log("logged in..");
-				} else {
-					console.log("failed to log in.")
-				}
-			});
+		.then(function(response) {
+			if(response.data.success) {
+				$scope.user = response.data.user;
+				console.log("logged in.... " + JSON.stringify(response));
+			} else {
+				$scope.signInError = "User credentials are invalid. Please try again.";
+				console.log("failed to log in.... " + JSON.stringify(response));
+			}
+		});
 	};
 })
 .controller('signUpController', function($scope, $http, $location) {
