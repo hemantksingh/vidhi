@@ -10,7 +10,18 @@ module.exports = function(database) {
 		});
 	}
 
+	function getUser(username, callback) {
+		database.getDb(function(err, db){
+			if(err) {
+				callback(err);
+			} else {
+				db.users.findOne({username: username}, callback);
+			}
+		});
+	}
+
 	return {
-		addUser : addUser
+		addUser : addUser,
+		getUser : getUser
 	};
 };

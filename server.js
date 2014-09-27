@@ -3,10 +3,10 @@ process.env.NODE_ENV || 'development';
 var config = require('./server/startUp/config')[env];
 var database = require('./server/database')(config);
 var hasher = require('./server/hasher')(require('crypto'));
-var authorization = require('./server/authorization')(hasher, database);
-var app = require('./server/startUp/express')(config);
-var passport = require('./server/startUp/passport')(authorization, database);
 var userRepository = require('./server/repositories/userRepository')(database);
+var authorization = require('./server/authorization')(hasher, userRepository);
+var app = require('./server/startUp/express')(config);
+var passport = require('./server/startUp/passport')(authorization, userRepository);
 var userController = require('./server/controllers/userController');
 var routes = require('./server/startUp/routes')(
 	app, userController(require('passport'), hasher, userRepository));
