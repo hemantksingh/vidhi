@@ -10,12 +10,7 @@ module.exports = function() {
 		callback(null, lastSavedUser);
 	}
 
-	function getLastSavedUser() {
-		return lastSavedUser;	
-	}
-
 	return {
-		getLastSavedUser : getLastSavedUser,
 		getUser : getUser,
 		addUser : addUser
 	};

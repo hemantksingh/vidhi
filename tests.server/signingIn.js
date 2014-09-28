@@ -31,6 +31,36 @@ describe("Signing in with valid username and password", function() {
 	});
 });
 
+describe("Signing in with invalid password", function() {
+	var verifiedUser = null;
+	
+	beforeEach(function() {
+		var hasher = fakeHasher();
+		hasher.setHash("invalidPasswordPlusHash");
+		var userRepository = fakeUserRepository();
+		userRepository.addUser(
+			{
+				firstName: "H", 
+				lastName: "K", 
+				username: "user@org.com",
+				email: "user@org.com", 
+				password : "password", 
+				passwordHash: "passwordPlusHash"
+			}, function (err) {}
+		);
+
+		authorization(hasher,userRepository)
+			.verifyUser("user@org.com", "invalidPassword", function(err, user) {
+				verifiedUser = user;
+			});
+	});
+
+	it("should not sign in the user.", function() {
+		verifiedUser.should.equal(false);
+	});
+});
+
+
 function fakeHasher() {
 	var computedHash = null;
 

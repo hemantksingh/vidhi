@@ -47,8 +47,9 @@ describe("Signing up with valid details", function() {
 	});
 
 	it("should save the user.", function() {
-		var savedUser = userRepository.getLastSavedUser();
-		should(savedUser).not.equal(null);
+		userRepository.getUser("user@org.com", function(err, user){
+			should(user).not.equal(null);
+		});
 	});
 
 	it("should return a response", function(){
