@@ -19,8 +19,8 @@
 					</a>
 				</div>
 			</div>	
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
+			<div ng-controller="mainController" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right" ng-hide="identity.isAuthenticated()">
 					<li class="nav">
 						<a href="/sign-up">Sign up</a>
 					</li>

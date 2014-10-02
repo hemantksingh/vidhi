@@ -14,7 +14,18 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 		redirectTo: '/'
 	});
 })
-.controller('signInController', function($scope, $http) {
+.factory('identity', function() {
+	return{
+		currentUser: undefined,
+		isAuthenticated: function() {
+			return !!this.currentUser;
+		}
+	};
+})
+.controller('mainController', function($scope, identity){
+	$scope.identity = identity;
+})
+.controller('signInController', function($scope, $http, identity) {
 	$scope.title = "Vidhi - Sign in";
 	$scope.signInError = null;
 
@@ -23,6 +34,7 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 		.then(function(response) {
 			if(response.data.success) {
 				$scope.user = response.data.user;
+				identity.currentUser = response.data.user;
 				console.log("logged in.... " + JSON.stringify(response));
 			} else {
 				$scope.signInError = "User credentials are invalid. Please try again.";
