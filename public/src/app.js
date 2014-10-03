@@ -10,6 +10,10 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 		templateUrl: '/partials/sign-up.html', 
 		controller : 'signUpController'
 	})
+	.when('/sign-out', {
+		templateUrl: '/partials/sign-out.html',
+		controller: 'signOutController'
+	})
 	.when('/dashboard', {
 		templateUrl: '/partials/dashboard.html',
 		controller: 'dashboardController'
@@ -74,4 +78,8 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 })
 .controller('dashboardController', function($scope, identity){
 	$scope.identity = identity;
+})
+.controller('signOutController', function($location, identity){
+	identity.currentUser = undefined;
+	$location.path("/sign-in");
 });

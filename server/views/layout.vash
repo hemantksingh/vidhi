@@ -20,12 +20,15 @@
 				</div>
 			</div>	
 			<div ng-controller="mainController" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right" ng-hide="identity.isAuthenticated()">
-					<li class="nav">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="nav" ng-hide="identity.isAuthenticated()">
 						<a href="/sign-up">Sign up</a>
 					</li>
-					<li class="nav">
+					<li class="nav" ng-hide="identity.isAuthenticated()">
 						<a href="/sign-in">Sign in</a>
+					</li>
+					<li class="nav" ng-show="identity.isAuthenticated()">
+						<a href="/sign-out">Sign out</a>
 					</li>
 				</ul>
 			</div>
