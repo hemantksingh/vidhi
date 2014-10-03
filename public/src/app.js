@@ -10,6 +10,10 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 		templateUrl: '/partials/sign-up.html', 
 		controller : 'signUpController'
 	})
+	.when('/dashboard', {
+		templateUrl: '/partials/dashboard.html',
+		controller: 'dashboardController'
+	})
 	.otherwise({
 		redirectTo: '/'
 	});
@@ -25,7 +29,7 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 .controller('mainController', function($scope, identity){
 	$scope.identity = identity;
 })
-.controller('signInController', function($scope, $http, identity) {
+.controller('signInController', function($scope, $http, $location, identity) {
 	$scope.title = "Vidhi - Sign in";
 	$scope.signInError = null;
 
@@ -35,6 +39,7 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 			if(response.data.success) {
 				$scope.user = response.data.user;
 				identity.currentUser = response.data.user;
+				$location.path('/dashboard');
 				console.log("logged in.... " + JSON.stringify(response));
 			} else {
 				$scope.signInError = "User credentials are invalid. Please try again.";
@@ -68,4 +73,7 @@ angular.module('vidhi', ['ngResource', 'ngRoute'])
 	$scope.passwordsMatch = function(user) {
 		return user.password === user.confirmedPassword;
 	}
+})
+.controller('dashboardController', function($scope, identity){
+	$scope.identity = identity;
 });
