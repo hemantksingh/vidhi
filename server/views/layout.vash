@@ -28,7 +28,7 @@
 						<a href="/sign-in">Sign in</a>
 					</li>
 					<li class="nav" ng-show="identity.isAuthenticated()">
-						<a href="/sign-out">Sign out</a>
+						<a href="" ng-click="signOut()">Sign out</a>
 					</li>
 				</ul>
 			</div>
