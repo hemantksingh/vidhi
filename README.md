@@ -50,7 +50,7 @@ $ heroku keys:add
 
 Deploy to Heroku
 ```
-$ heroku create
+$ heroku git:remote -a vidhi 
 $ git push heroku master
 $ heroku open
 ```
