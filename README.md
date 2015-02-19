@@ -17,7 +17,7 @@ $ npm install
 $ npm start
 ```
 
-Your app should now be running on [localhost:4000](http://localhost:4000/).
+Your app should now be running on [localhost:4000](http://localhost:4000/). Mongo db REST api should be available on [localhost:28017](http://localhost:28017/).
 
 ### Networking
 Configured for private network on static IP: 192.168.33.10, with port :4000 forwarded.
