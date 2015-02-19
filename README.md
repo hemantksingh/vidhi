@@ -22,7 +22,7 @@ Your app should now be running on [localhost:4000](http://localhost:4000/).
 ### Networking
 Configured for private network on static IP: 192.168.33.10, with port :4000 forwarded.
 
-So from a web browser you have two ways of accessing a node.js process for example running on port 3000 on the VM:
+So from a web browser you have two ways of accessing a node.js process for example running on port 4000 on the VM:
 
 * ```localhost:4000```
 * ```192.168.33.10:4000```
